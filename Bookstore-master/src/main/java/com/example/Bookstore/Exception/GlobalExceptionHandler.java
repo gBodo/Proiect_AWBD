@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -37,6 +38,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         logger.error("IllegalArgumentException: {}", ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException ex) {
+        logger.error("Bad credentials: {}", ex.getMessage());
+        return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
     }
 
     // Catch-all handler for unexpected exceptions
