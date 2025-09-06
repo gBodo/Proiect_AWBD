@@ -17,8 +17,8 @@ public class JwtUtil {
     private static final String SECRET_STRING = "MoncherMoncherMonserMoncherMoncherCheribyCristiMega";
 
     private static final Key SECRET_KEY = Keys.hmacShaKeyFor(SECRET_STRING.getBytes());
-//    private static final long JWT_TOKEN_VALIDITY = 5 * 3600; // 5 hours
-    private static final long JWT_TOKEN_VALIDITY = 30; // in seconds
+    private static final long JWT_TOKEN_VALIDITY = 5 * 3600; // 5 hours
+//    private static final long JWT_TOKEN_VALIDITY = 30; // in seconds
 
 
     public String extractUsername(String token) {

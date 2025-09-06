@@ -1,17 +1,23 @@
 package com.example.Bookstore.RequestBody;
 
 import com.example.Bookstore.Model.Category;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 
 import java.util.List;
 
 public class BookBody {
 
     private Long id;
+    @NotBlank(message = "Title is required")
     private String title;
-    private List<String> authors; // multiple authors
+    @NotEmpty(message = "At least one author is required")
+    private List<@NotBlank(message = "Author name cannot be blank") String> authors;
+    @Positive(message = "Price must be greater than 0")
     private double price;
+    @NotBlank(message = "Cover image URL is required")
+    @Size(max = 255, message = "Cover image URL must be less than 500 characters")
     private String coverImageUrl;
+    @NotNull(message = "Category is required")
     private Category category;
 
     public String getTitle() {

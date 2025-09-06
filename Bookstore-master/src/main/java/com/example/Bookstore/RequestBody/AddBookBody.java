@@ -9,7 +9,7 @@ public class AddBookBody {
     @NotEmpty
     private List<String> authors;
     @NotBlank
-    @Size(min = 8 , max = 255)
+    @Size( max = 255)
     private String cover_image_url;
     @NotNull
     @Positive

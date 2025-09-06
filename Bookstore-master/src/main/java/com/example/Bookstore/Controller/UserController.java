@@ -40,42 +40,24 @@ public class UserController {
     @Operation(summary = "Register user.")
     public ResponseEntity<String> registerUser(@Valid @RequestBody RegistrationBody registrationBody) {
         logger.info("Attempting to register a new user with username: {}", registrationBody.getUsername());
-        try {
-            String user = userService.registerUser(registrationBody);
-            logger.info("User '{}' registered successfully.", registrationBody.getUsername());
-            return ResponseEntity.status(HttpStatus.CREATED).body(user);
-        } catch (IllegalArgumentException e) {
-            logger.error("Failed to register user '{}': {}", registrationBody.getUsername(), e.getMessage());
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+        String user = userService.registerUser(registrationBody);
+        logger.info("User '{}' registered successfully.", registrationBody.getUsername());
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @PostMapping("/login")
     @Operation(summary = "Login user.")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
         logger.info("Login attempt for username: {}", loginRequest.getUsername());
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-            );
 
-            final UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
-            final String jwt = jwtUtil.generateToken(userDetails);
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+        );
 
-            logger.info("User '{}' logged in successfully.", loginRequest.getUsername());
-            return ResponseEntity.ok(new LoginResponse(jwt));
-        } catch (Exception e) {
-            logger.warn("Failed login attempt for username '{}': {}", loginRequest.getUsername(), e.getMessage());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-        }
+        final UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
+        final String jwt = jwtUtil.generateToken(userDetails);
+
+        logger.info("User '{}' logged in successfully.", loginRequest.getUsername());
+        return ResponseEntity.ok(new LoginResponse(jwt));
     }
-
-    // Optional: Could use AOP aspect to log method entry/exit for all controller methods
-    // @Around("execution(* com.example.Bookstore.Controller..*(..))")
-    // public Object logExecution(ProceedingJoinPoint joinPoint) throws Throwable {
-    //     logger.info("Entering method: {}", joinPoint.getSignature());
-    //     Object result = joinPoint.proceed();
-    //     logger.info("Exiting method: {}", joinPoint.getSignature());
-    //     return result;
-    // }
 }

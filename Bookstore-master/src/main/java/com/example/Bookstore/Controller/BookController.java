@@ -4,6 +4,7 @@ import com.example.Bookstore.RequestBody.BookBody;
 import com.example.Bookstore.Service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -28,33 +29,23 @@ public class BookController {
     @GetMapping()
     @Operation(summary = "View all the books.")
     public ResponseEntity<Page<BookBody>> getAllBooks(
-            @RequestParam(required = false) Integer category,
+            @Valid @RequestParam(required = false) Integer category,
             @RequestParam(required = false) String search,
             @RequestParam(required = false, defaultValue = "title") String sortBy,
             @RequestParam(required = false, defaultValue = "0") int page
     ) {
         logger.info("Fetching books: category={}, search='{}', sortBy='{}', page={}", category, search, sortBy, page);
-        try {
-            Page<BookBody> books = bookService.getAllBooks(category, search, sortBy, page);
-            logger.info("Fetched {} books for page {}", books.getNumberOfElements(), page + 1);
-            return ResponseEntity.ok(books);
-        } catch (Exception e) {
-            logger.error("Failed to fetch books: {}", e.getMessage());
-            return ResponseEntity.status(500).build();
-        }
+        Page<BookBody> books = bookService.getAllBooks(category, search, sortBy, page);
+        logger.info("Fetched {} books for page {}", books.getNumberOfElements(), page + 1);
+        return ResponseEntity.ok(books);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "View a single book's details.")
     public ResponseEntity<BookBody> getBookById(@PathVariable Integer id) {
         logger.info("Fetching details for book with ID: {}", id);
-        try {
-            BookBody dto = bookService.getBookById(id);
-            logger.info("Fetched details for book '{}'", dto.getTitle());
-            return ResponseEntity.ok(dto);
-        } catch (Exception e) {
-            logger.warn("Failed to fetch book with ID {}: {}", id, e.getMessage());
-            return ResponseEntity.notFound().build();
-        }
+        BookBody dto = bookService.getBookById(id);
+        logger.info("Fetched details for book '{}'", dto.getTitle());
+        return ResponseEntity.ok(dto);
     }
 }

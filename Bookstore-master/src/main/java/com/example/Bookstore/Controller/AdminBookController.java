@@ -27,40 +27,27 @@ public class AdminBookController {
         this.bookService = bookService;
     }
 
-    // Admin-only endpoint - only users with ADMIN role can add books
     @PostMapping("/add")
     public ResponseEntity<String> addBook(@Valid @RequestBody AddBookBody addBookBody) {
-        try {
-            String book = bookService.addBook(addBookBody);
-            logger.info("ADMIN has added a new book.");
-            return ResponseEntity.status(HttpStatus.CREATED).body(book);
-        } catch (IllegalArgumentException e) {
-            logger.error("ADMIN has failed to add a new book.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+        logger.info("ADMIN is adding a new book.");
+        String book = bookService.addBook(addBookBody);
+        logger.info("ADMIN successfully added a new book: {}", book);
+        return ResponseEntity.status(HttpStatus.CREATED).body(book);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> DeleteBook(@Valid @RequestBody DeleteBookBody deleteBookBody) {
-        try {
-            String deleteBook = bookService.deleteBook(deleteBookBody);
-            logger.info("ADMIN has deleted a book.");
-            return ResponseEntity.ok(deleteBook);
-        } catch (IllegalArgumentException e) {
-            logger.error("ADMIN has failed to delete a book.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+    public ResponseEntity<String> deleteBook(@Valid @RequestBody DeleteBookBody deleteBookBody) {
+        logger.info("ADMIN is deleting a book.");
+        String deleted = bookService.deleteBook(deleteBookBody);
+        logger.info("ADMIN successfully deleted a book: {}", deleted);
+        return ResponseEntity.ok(deleted);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> UpdateBook(@Valid @RequestBody UpdatePriceBookBody updatePriceBookBody) {
-        try {
-            String updateBook = bookService.updateBookPrice(updatePriceBookBody);
-            logger.info("ADMIN has updated a book's price.");
-            return ResponseEntity.ok(updateBook);
-        } catch (IllegalArgumentException e) {
-            logger.error("ADMIN has failed to update a book's price.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+    public ResponseEntity<String> updateBook(@Valid @RequestBody UpdatePriceBookBody updatePriceBookBody) {
+        logger.info("ADMIN is updating a book's price.");
+        String updated = bookService.updateBookPrice(updatePriceBookBody);
+        logger.info("ADMIN successfully updated a book: {}", updated);
+        return ResponseEntity.ok(updated);
     }
 }
