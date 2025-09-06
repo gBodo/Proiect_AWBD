@@ -39,9 +39,9 @@ class UserIntegrationTest {
 
 
         assertThat(response).isNotNull();
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED); // or CREATED if your controller returns 201
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody()).contains("Registration successful!"); // or the exact message your API returns
+        assertThat(response.getBody()).contains("Registration successful!");
     }
 
     @Test
@@ -115,7 +115,7 @@ class UserIntegrationTest {
         );
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
-        assertThat(response.getBody()).contains("Invalid username or password"); // optional check if your message includes that
+        assertThat(response.getBody()).contains("Invalid username or password");
     }
 
 
@@ -124,7 +124,7 @@ class UserIntegrationTest {
         RegistrationBody invalidRegistration = new RegistrationBody();
         invalidRegistration.setUsername("testuser");
         invalidRegistration.setPassword("password123");
-        invalidRegistration.setEmail("invalid-email");  // Invalid email format
+        invalidRegistration.setEmail("invalid-email");
 
         ResponseEntity<String> response = restTemplate.postForEntity(
                 "/api/auth/register",
@@ -141,7 +141,7 @@ class UserIntegrationTest {
 
         RegistrationBody invalidRegistration = new RegistrationBody();
         invalidRegistration.setUsername("testuser");
-        invalidRegistration.setPassword("123");  // Too short (less than 8 characters)
+        invalidRegistration.setPassword("123");
         invalidRegistration.setEmail("test@example.com");
 
         ResponseEntity<String> response = restTemplate.postForEntity(
