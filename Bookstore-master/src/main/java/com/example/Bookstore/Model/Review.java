@@ -12,19 +12,19 @@ public class Review {
     private Long id;
 
     @Column(name = "rating", nullable = false)
-    private Integer rating; // Rating between 1 and 5
+    private Integer rating;
 
     @Column(name = "comment", columnDefinition = "TEXT", nullable = true)
-    private String comment; // Optional comment
+    private String comment;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user; // FK → users.id
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book; // FK → books.id
+    private Book book;
 
     public Long getId() {
         return id;

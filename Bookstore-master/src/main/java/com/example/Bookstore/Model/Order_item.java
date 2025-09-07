@@ -19,11 +19,11 @@ public class Order_item {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order; // FK → orders.id
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book; // FK → books.id
+    private Book book;
 
     public Long getId() {
         return id;

@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    // Handle validation errors (from @Valid DTOs)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         logger.error("Validation failed: {}", ex.getMessage());
@@ -33,7 +32,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    // Handle illegal arguments (like duplicate username/email)
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         logger.error("IllegalArgumentException: {}", ex.getMessage());
@@ -46,7 +44,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
     }
 
-    // Catch-all handler for unexpected exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception ex) {
         logger.error("Unexpected error occurred", ex);

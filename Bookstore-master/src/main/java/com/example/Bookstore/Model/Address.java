@@ -16,7 +16,7 @@ public class Address {
     @Column(name = "city", nullable = false, length = 100)
     private String city;
 
-    @Column(name = "state", length = 100) // Optional state
+    @Column(name = "state", length = 100)
     private String state;
 
     @Column(name = "zip_code", nullable = false, length = 20)
@@ -27,7 +27,7 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user; // FK → users.id
+    private User user;
 
     public Long getId() {
         return id;

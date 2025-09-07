@@ -72,9 +72,7 @@ public Page<BookBody> getAllBooks(Integer categoryId, String search, String sort
         dto.setPrice(book.getPrice());
         dto.setCoverImageUrl(book.getCoverImageUrl());
 
-        // Ensure category is attached
         if (book.getCategory() != null) {
-            // Create a lightweight DTO for category if needed, or send the whole object
             Category category = new Category();
             category.setId(book.getCategory().getId());
             category.setName(book.getCategory().getName());
@@ -92,7 +90,7 @@ public Page<BookBody> getAllBooks(Integer categoryId, String search, String sort
         dto.setAuthors(book.getAuthors().stream().map(Author::getName).collect(Collectors.toList()));
         dto.setPrice(book.getPrice());
         dto.setCoverImageUrl(book.getCoverImageUrl());
-        dto.setCategory(book.getCategory()); // send full category
+        dto.setCategory(book.getCategory());
         return dto;
     }
 
@@ -110,12 +108,12 @@ public Page<BookBody> getAllBooks(Integer categoryId, String search, String sort
         book.setPrice(addBookBody.getPrice());
         book.setTitle(addBookBody.getTitle());
 
-        // set category
+
         Category category = new Category();
         category.setId(addBookBody.getCategory_id());
         book.setCategory(category);
 
-        // Handle authors
+
         List<Author> authors = new ArrayList<>();
         if (addBookBody.getAuthors() != null) {
             for (String authorName : addBookBody.getAuthors()) {

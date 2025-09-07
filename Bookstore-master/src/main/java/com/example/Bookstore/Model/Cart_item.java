@@ -12,11 +12,11 @@ public class Cart_item {
 
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false)
-    private Cart cart; // FK → cart.id
+    private Cart cart;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book; // FK → books.id
+    private Book book;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;

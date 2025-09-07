@@ -30,21 +30,21 @@ public class User implements UserDetails {
 
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Cart cart; // 1:1 Relationship with Cart
+    private Cart cart;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders; // 1:N Relationship with Orders
+    private List<Order> orders;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews; // 1:N Relationship with Reviews
+    private List<Review> reviews;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Address> addresses; // 1:N Relationship with Addresses
+    private List<Address> addresses;
 
-    // Setter Role
+
     public void setRole(String role) {
         if (!UserRole.isValid(role)) {
             throw new IllegalArgumentException("Invalid role");
@@ -52,7 +52,6 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    // Add UserDetails implementation methods
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));

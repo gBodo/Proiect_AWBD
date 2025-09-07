@@ -26,7 +26,7 @@ public class Order {
 
     @JsonIgnore
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order_item> orderItems; // 1:N Relationship with OrderItems
+    private List<Order_item> orderItems;
 
     @ManyToOne
     @JoinColumn(name = "address_id", nullable = false)
