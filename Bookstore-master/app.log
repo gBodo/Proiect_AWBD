@@ -1,21 +1,862 @@
-2025-09-07T02:28:02.684+03:00  INFO 10362 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : Starting BookIntegrationTest using Java 21.0.7 with PID 10362 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
-2025-09-07T02:28:02.688+03:00  INFO 10362 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : The following 1 profile is active: "test"
-2025-09-07T02:28:03.930+03:00  INFO 10362 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-07T02:28:04.011+03:00  INFO 10362 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 10 JPA repository interfaces.
-2025-09-07T02:28:04.678+03:00  INFO 10362 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2025-09-07T02:28:04.693+03:00  INFO 10362 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-07T02:28:04.694+03:00  INFO 10362 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
-2025-09-07T02:28:04.751+03:00  INFO 10362 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-07T02:28:04.752+03:00  INFO 10362 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2042 ms
-2025-09-07T02:28:04.945+03:00  INFO 10362 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-07T02:28:05.007+03:00  INFO 10362 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
-2025-09-07T02:28:05.041+03:00  INFO 10362 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-07T02:28:05.289+03:00  INFO 10362 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-07T02:28:05.315+03:00  INFO 10362 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-07T02:28:05.532+03:00  INFO 10362 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
-2025-09-07T02:28:05.535+03:00  INFO 10362 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-07T02:28:05.568+03:00  WARN 10362 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-07T02:28:05.592+03:00  INFO 10362 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-09-08T02:05:41.041+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 460 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:05:41.047+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:05:42.047+03:00  INFO 460 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:05:42.117+03:00  INFO 460 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:05:42.716+03:00  INFO 460 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:05:42.761+03:00  INFO 460 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:05:42.791+03:00  INFO 460 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:05:43.065+03:00  INFO 460 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:05:43.098+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:05:43.526+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@160546b1
+2025-09-08T02:05:43.529+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:05:43.569+03:00  WARN 460 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:05:43.571+03:00  WARN 460 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:05:43.594+03:00  INFO 460 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:05:44.766+03:00  INFO 460 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:05:44.886+03:00  INFO 460 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:05:45.352+03:00  INFO 460 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:05:45.353+03:00  WARN 460 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:05:45.469+03:00  WARN 460 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:05:46.074+03:00  WARN 460 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:05:46.349+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.752 seconds (process running for 6.76)
+2025-09-08T02:05:46.827+03:00  INFO 460 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:05:46.839+03:00  INFO 460 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:05:46.849+03:00  INFO 460 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:05:46.918+03:00  INFO 460 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 460 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:05:46.919+03:00  INFO 460 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:05:47.260+03:00  INFO 460 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:05:47.280+03:00  INFO 460 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:05:47.523+03:00  INFO 460 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:05:47.547+03:00  INFO 460 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:05:47.548+03:00  INFO 460 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:05:47.598+03:00  INFO 460 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:05:47.599+03:00  INFO 460 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 677 ms
+2025-09-08T02:05:47.668+03:00  INFO 460 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:05:47.672+03:00  INFO 460 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:05:47.687+03:00  INFO 460 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:05:47.688+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:05:47.925+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:05:47.926+03:00  INFO 460 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:05:47.936+03:00  WARN 460 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:05:47.943+03:00  INFO 460 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:05:48.248+03:00  INFO 460 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:05:48.353+03:00  INFO 460 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:05:48.543+03:00  INFO 460 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:05:48.544+03:00  WARN 460 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:05:48.596+03:00  WARN 460 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:05:48.765+03:00  WARN 460 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:05:48.853+03:00  INFO 460 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:05:49.010+03:00  INFO 460 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 42039 (http) with context path '/'
+2025-09-08T02:05:49.014+03:00  INFO 460 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 2.166 seconds (process running for 9.426)
+2025-09-08T02:05:49.172+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:05:49.173+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:05:49.174+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T02:05:49.282+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:05:49.576+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:05:49.610+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:05:49.778+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:05:49.832+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:05:49.913+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:05:49.925+03:00  INFO 460 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:05:50.003+03:00 ERROR 460 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:05:50.187+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching books: category=null, search='null', sortBy='title', page=0
+2025-09-08T02:05:50.192+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched 1 books for page 1
+2025-09-08T02:05:50.211+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching details for book with ID: 999
+2025-09-08T02:05:50.217+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching details for book with ID: 1
+2025-09-08T02:05:50.218+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched details for book 'Test Book'
+2025-09-08T02:05:50.224+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching books: category=null, search='null', sortBy='title', page=0
+2025-09-08T02:05:50.224+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched 1 books for page 1
+2025-09-08T02:05:50.238+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching books: category=1, search='null', sortBy='title', page=0
+2025-09-08T02:05:50.239+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched 1 books for page 1
+2025-09-08T02:05:50.242+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching books: category=1, search='test', sortBy='title', page=0
+2025-09-08T02:05:50.243+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched 1 books for page 1
+2025-09-08T02:05:50.247+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetching books: category=null, search='test', sortBy='title', page=0
+2025-09-08T02:05:50.247+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.BookController  : Fetched 1 books for page 1
+2025-09-08T02:05:50.613+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:05:50.614+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:05:50.625+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:05:50.626+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:05:50.633+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:05:50.640+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:05:50.646+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:05:50.647+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:05:50.652+03:00  INFO 460 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:05:51.164+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:05:51.168+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:05:51.180+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:05:51.184+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:05:51.188+03:00  INFO 460 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:05:51.193+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:05:51.194+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:05:51.196+03:00  INFO 460 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:14:07.610+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 1395 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:14:07.612+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:14:08.574+03:00  INFO 1395 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:14:08.657+03:00  INFO 1395 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:14:09.252+03:00  INFO 1395 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:14:09.296+03:00  INFO 1395 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:14:09.324+03:00  INFO 1395 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:14:09.573+03:00  INFO 1395 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:14:09.600+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:14:10.001+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b1d1a5
+2025-09-08T02:14:10.003+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:14:10.040+03:00  WARN 1395 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:14:10.041+03:00  WARN 1395 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:14:10.057+03:00  INFO 1395 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:14:11.096+03:00  INFO 1395 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:14:11.210+03:00  INFO 1395 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:14:11.630+03:00  INFO 1395 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:14:11.630+03:00  WARN 1395 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:14:11.744+03:00  WARN 1395 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:14:12.338+03:00  WARN 1395 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:14:12.594+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.337 seconds (process running for 6.305)
+2025-09-08T02:14:13.147+03:00  INFO 1395 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:14:13.160+03:00  INFO 1395 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:14:13.165+03:00  INFO 1395 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:14:13.216+03:00  INFO 1395 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 1395 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:14:13.216+03:00  INFO 1395 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:14:13.459+03:00  INFO 1395 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:14:13.481+03:00  INFO 1395 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:14:13.704+03:00  INFO 1395 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:14:13.718+03:00  INFO 1395 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:14:13.719+03:00  INFO 1395 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:14:13.774+03:00  INFO 1395 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:14:13.775+03:00  INFO 1395 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 557 ms
+2025-09-08T02:14:13.841+03:00  INFO 1395 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:14:13.845+03:00  INFO 1395 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:14:13.856+03:00  INFO 1395 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:14:13.857+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:14:14.039+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:14:14.040+03:00  INFO 1395 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:14:14.047+03:00  WARN 1395 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:14:14.054+03:00  INFO 1395 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:14:14.335+03:00  INFO 1395 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:14:14.430+03:00  INFO 1395 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:14:14.628+03:00  INFO 1395 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:14:14.630+03:00  WARN 1395 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:14:14.682+03:00  WARN 1395 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:14:14.845+03:00  WARN 1395 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:14:14.905+03:00  INFO 1395 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:14:15.021+03:00  INFO 1395 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 42451 (http) with context path '/'
+2025-09-08T02:14:15.028+03:00  INFO 1395 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.863 seconds (process running for 8.739)
+2025-09-08T02:14:15.169+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:14:15.170+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:14:15.171+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T02:14:15.285+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:14:15.569+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:14:15.614+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:14:15.786+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:14:15.845+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:14:15.926+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:14:15.941+03:00  INFO 1395 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:14:16.013+03:00 ERROR 1395 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:14:16.415+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:14:16.419+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:14:16.439+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:14:16.440+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:14:16.451+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:14:16.461+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:14:16.468+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:14:16.469+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:14:16.476+03:00  INFO 1395 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:14:16.756+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:14:16.759+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:14:16.770+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:14:16.775+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:14:16.778+03:00  INFO 1395 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:14:16.784+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:14:16.785+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:14:16.786+03:00  INFO 1395 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:23:24.378+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 2389 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:23:24.380+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:23:25.401+03:00  INFO 2389 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:23:25.476+03:00  INFO 2389 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:23:26.033+03:00  INFO 2389 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:23:26.077+03:00  INFO 2389 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:23:26.107+03:00  INFO 2389 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:23:26.347+03:00  INFO 2389 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:23:26.375+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:23:26.748+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b1d1a5
+2025-09-08T02:23:26.750+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:23:26.788+03:00  WARN 2389 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:23:26.790+03:00  WARN 2389 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:23:26.806+03:00  INFO 2389 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:23:27.812+03:00  INFO 2389 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:23:27.929+03:00  INFO 2389 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:23:28.354+03:00  INFO 2389 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:23:28.355+03:00  WARN 2389 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:23:28.444+03:00  WARN 2389 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:23:29.005+03:00  WARN 2389 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:23:29.231+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.349 seconds (process running for 6.609)
+2025-09-08T02:23:29.737+03:00  INFO 2389 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:23:29.745+03:00  INFO 2389 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:23:29.751+03:00  INFO 2389 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:23:29.811+03:00  INFO 2389 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 2389 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:23:29.811+03:00  INFO 2389 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:23:30.103+03:00  INFO 2389 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:23:30.126+03:00  INFO 2389 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:23:30.367+03:00  INFO 2389 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:23:30.383+03:00  INFO 2389 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:23:30.384+03:00  INFO 2389 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:23:30.431+03:00  INFO 2389 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:23:30.432+03:00  INFO 2389 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 618 ms
+2025-09-08T02:23:30.476+03:00  INFO 2389 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:23:30.479+03:00  INFO 2389 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:23:30.487+03:00  INFO 2389 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:23:30.488+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:23:30.663+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:23:30.664+03:00  INFO 2389 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:23:30.671+03:00  WARN 2389 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:23:30.679+03:00  INFO 2389 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:23:30.951+03:00  INFO 2389 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:23:31.035+03:00  INFO 2389 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:23:31.200+03:00  INFO 2389 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:23:31.201+03:00  WARN 2389 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:23:31.238+03:00  WARN 2389 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:23:31.362+03:00  WARN 2389 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:23:31.424+03:00  INFO 2389 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:23:31.551+03:00  INFO 2389 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 41385 (http) with context path '/'
+2025-09-08T02:23:31.555+03:00  INFO 2389 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.804 seconds (process running for 8.933)
+2025-09-08T02:23:31.713+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:23:31.714+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:23:31.715+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T02:23:31.813+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:23:32.083+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:23:32.116+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:23:32.292+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:23:32.349+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:23:32.432+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:23:32.446+03:00  INFO 2389 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:23:32.522+03:00 ERROR 2389 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:23:32.964+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:23:32.967+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:23:32.984+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:23:32.984+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:23:32.992+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:23:33.000+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:23:33.007+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:23:33.008+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:23:33.016+03:00  INFO 2389 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:23:33.287+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:23:33.290+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:23:33.300+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:23:33.304+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:23:33.307+03:00  INFO 2389 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:23:33.313+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:23:33.314+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:23:33.315+03:00  INFO 2389 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:35:03.008+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 3832 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:35:03.010+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:35:03.970+03:00  INFO 3832 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:35:04.041+03:00  INFO 3832 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:35:04.560+03:00  INFO 3832 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:35:04.603+03:00  INFO 3832 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:35:04.629+03:00  INFO 3832 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:35:04.859+03:00  INFO 3832 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:35:04.886+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:35:05.243+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bc21e34
+2025-09-08T02:35:05.245+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:35:05.287+03:00  WARN 3832 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:35:05.289+03:00  WARN 3832 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:35:05.305+03:00  INFO 3832 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:35:06.316+03:00  INFO 3832 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:35:06.431+03:00  INFO 3832 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:35:06.835+03:00  INFO 3832 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:35:06.835+03:00  WARN 3832 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:35:06.938+03:00  WARN 3832 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:35:07.506+03:00  WARN 3832 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:35:07.752+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.2 seconds (process running for 6.263)
+2025-09-08T02:35:08.315+03:00  INFO 3832 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:35:08.327+03:00  INFO 3832 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:35:08.333+03:00  INFO 3832 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:35:08.383+03:00  INFO 3832 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 3832 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:35:08.383+03:00  INFO 3832 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:35:08.672+03:00  INFO 3832 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:35:08.689+03:00  INFO 3832 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:35:08.902+03:00  INFO 3832 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:35:08.920+03:00  INFO 3832 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:35:08.921+03:00  INFO 3832 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:35:08.968+03:00  INFO 3832 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:35:08.968+03:00  INFO 3832 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 582 ms
+2025-09-08T02:35:09.015+03:00  INFO 3832 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:35:09.018+03:00  INFO 3832 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:35:09.028+03:00  INFO 3832 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:35:09.029+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:35:09.210+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:35:09.211+03:00  INFO 3832 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:35:09.218+03:00  WARN 3832 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:35:09.225+03:00  INFO 3832 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:35:09.517+03:00  INFO 3832 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:35:09.590+03:00  INFO 3832 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:35:09.734+03:00  INFO 3832 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:35:09.735+03:00  WARN 3832 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:35:09.769+03:00  WARN 3832 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:35:09.905+03:00  WARN 3832 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:35:09.961+03:00  INFO 3832 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:35:10.070+03:00  INFO 3832 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 40997 (http) with context path '/'
+2025-09-08T02:35:10.074+03:00  INFO 3832 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.742 seconds (process running for 8.585)
+2025-09-08T02:35:10.230+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:35:10.231+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:35:10.232+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T02:35:10.344+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:35:10.589+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:35:10.623+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:35:10.797+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:35:10.865+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:35:10.942+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:35:10.956+03:00  INFO 3832 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:35:11.031+03:00 ERROR 3832 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:35:11.467+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:35:11.471+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:35:11.487+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:35:11.488+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:35:11.496+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:35:11.503+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:35:11.508+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:35:11.509+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:35:11.515+03:00  INFO 3832 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:35:11.743+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:35:11.747+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:35:11.758+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:35:11.762+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:35:11.765+03:00  INFO 3832 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:35:11.771+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:35:11.772+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:35:11.773+03:00  INFO 3832 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:40:41.339+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 4506 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:40:41.344+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:40:43.667+03:00  INFO 4506 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:40:43.889+03:00  INFO 4506 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 187 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:40:45.238+03:00  INFO 4506 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:40:45.331+03:00  INFO 4506 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:40:45.397+03:00  INFO 4506 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:40:46.028+03:00  INFO 4506 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:40:46.086+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:40:47.129+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@506b083
+2025-09-08T02:40:47.132+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:40:47.237+03:00  WARN 4506 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:40:47.247+03:00  WARN 4506 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:40:47.331+03:00  INFO 4506 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:40:49.808+03:00  INFO 4506 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:40:50.072+03:00  INFO 4506 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:40:51.183+03:00  INFO 4506 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:40:51.184+03:00  WARN 4506 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:40:51.434+03:00  WARN 4506 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:40:52.753+03:00  WARN 4506 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:40:53.530+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 13.236 seconds (process running for 16.104)
+2025-09-08T02:40:54.722+03:00  INFO 4506 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:40:54.767+03:00  INFO 4506 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:40:54.781+03:00  INFO 4506 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:40:54.964+03:00  INFO 4506 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 4506 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:40:54.974+03:00  INFO 4506 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:40:55.678+03:00  INFO 4506 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:40:55.711+03:00  INFO 4506 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:40:56.249+03:00  INFO 4506 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:40:56.276+03:00  INFO 4506 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:40:56.277+03:00  INFO 4506 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:40:56.420+03:00  INFO 4506 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:40:56.421+03:00  INFO 4506 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1444 ms
+2025-09-08T02:40:56.509+03:00  INFO 4506 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:40:56.514+03:00  INFO 4506 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:40:56.530+03:00  INFO 4506 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:40:56.531+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:40:56.996+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:40:57.000+03:00  INFO 4506 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:40:57.011+03:00  WARN 4506 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:40:57.036+03:00  INFO 4506 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:40:57.928+03:00  INFO 4506 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:40:58.096+03:00  INFO 4506 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:40:58.542+03:00  INFO 4506 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:40:58.543+03:00  WARN 4506 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:40:58.631+03:00  WARN 4506 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:40:58.917+03:00  WARN 4506 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:40:59.041+03:00  INFO 4506 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:40:59.394+03:00  INFO 4506 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 38043 (http) with context path '/'
+2025-09-08T02:40:59.414+03:00  INFO 4506 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 4.634 seconds (process running for 21.988)
+2025-09-08T02:40:59.840+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:40:59.841+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:40:59.844+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-09-08T02:41:00.050+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:41:00.667+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:41:00.765+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:41:01.074+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:41:01.207+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:41:01.322+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:41:01.361+03:00  INFO 4506 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:41:01.473+03:00 ERROR 4506 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:41:02.251+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:41:02.257+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:41:02.288+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:41:02.289+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:41:02.310+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:41:02.328+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:41:02.346+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:41:02.347+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:41:02.358+03:00  INFO 4506 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:41:02.734+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:41:02.738+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:41:02.767+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:41:02.773+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:41:02.781+03:00  INFO 4506 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:41:02.798+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:41:02.802+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:41:02.804+03:00  INFO 4506 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:43:58.574+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 5082 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:43:58.576+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:43:59.572+03:00  INFO 5082 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:43:59.645+03:00  INFO 5082 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:44:00.228+03:00  INFO 5082 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:44:00.272+03:00  INFO 5082 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:44:00.301+03:00  INFO 5082 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:44:00.541+03:00  INFO 5082 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:44:00.569+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:44:01.019+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f7ba0af
+2025-09-08T02:44:01.021+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:44:01.058+03:00  WARN 5082 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:44:01.060+03:00  WARN 5082 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:44:01.075+03:00  INFO 5082 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:44:02.125+03:00  INFO 5082 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:44:02.248+03:00  INFO 5082 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:44:02.654+03:00  INFO 5082 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:44:02.654+03:00  WARN 5082 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:44:02.761+03:00  WARN 5082 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:44:03.353+03:00  WARN 5082 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:44:03.613+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.428 seconds (process running for 6.565)
+2025-09-08T02:44:04.191+03:00  INFO 5082 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:44:04.203+03:00  INFO 5082 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:44:04.209+03:00  INFO 5082 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:44:04.274+03:00  INFO 5082 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 5082 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:44:04.275+03:00  INFO 5082 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:44:04.521+03:00  INFO 5082 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:44:04.546+03:00  INFO 5082 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:44:04.767+03:00  INFO 5082 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:44:04.781+03:00  INFO 5082 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:44:04.781+03:00  INFO 5082 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:44:04.828+03:00  INFO 5082 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:44:04.829+03:00  INFO 5082 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 551 ms
+2025-09-08T02:44:04.883+03:00  INFO 5082 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:44:04.886+03:00  INFO 5082 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:44:04.897+03:00  INFO 5082 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:44:04.899+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:44:05.122+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:44:05.123+03:00  INFO 5082 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:44:05.130+03:00  WARN 5082 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:44:05.136+03:00  INFO 5082 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:44:05.439+03:00  INFO 5082 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:44:05.510+03:00  INFO 5082 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:44:05.642+03:00  INFO 5082 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:44:05.643+03:00  WARN 5082 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:44:05.676+03:00  WARN 5082 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:44:05.838+03:00  WARN 5082 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:44:05.912+03:00  INFO 5082 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:44:06.043+03:00  INFO 5082 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 40555 (http) with context path '/'
+2025-09-08T02:44:06.047+03:00  INFO 5082 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.838 seconds (process running for 9.0)
+2025-09-08T02:44:06.209+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:44:06.210+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:44:06.212+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-09-08T02:44:06.309+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:44:06.588+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:44:06.625+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:44:06.795+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:44:06.861+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:44:06.947+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:44:06.960+03:00  INFO 5082 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:44:07.035+03:00 ERROR 5082 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:44:07.481+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:44:07.485+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:44:07.508+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:44:07.509+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:44:07.519+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:44:07.529+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:44:07.536+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:44:07.537+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:44:07.545+03:00  INFO 5082 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:44:07.825+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:44:07.828+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:44:07.841+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:44:07.846+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:44:07.849+03:00  INFO 5082 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:44:07.855+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:44:07.856+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:44:07.857+03:00  INFO 5082 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:54:12.176+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 5581 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:54:12.178+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:54:13.197+03:00  INFO 5581 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:54:13.274+03:00  INFO 5581 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:54:13.810+03:00  INFO 5581 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:54:13.854+03:00  INFO 5581 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:54:13.884+03:00  INFO 5581 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:54:14.128+03:00  INFO 5581 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:54:14.155+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:54:14.564+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68c4a860
+2025-09-08T02:54:14.566+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:54:14.612+03:00  WARN 5581 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:54:14.614+03:00  WARN 5581 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:54:14.631+03:00  INFO 5581 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:54:15.616+03:00  INFO 5581 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:54:15.736+03:00  INFO 5581 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:54:16.167+03:00  INFO 5581 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:54:16.167+03:00  WARN 5581 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:54:16.284+03:00  WARN 5581 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:54:16.933+03:00  WARN 5581 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:54:17.175+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.453 seconds (process running for 6.444)
+2025-09-08T02:54:17.712+03:00  INFO 5581 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:54:17.726+03:00  INFO 5581 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:54:17.733+03:00  INFO 5581 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:54:17.782+03:00  INFO 5581 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 5581 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:54:17.782+03:00  INFO 5581 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:54:18.054+03:00  INFO 5581 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:54:18.077+03:00  INFO 5581 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:54:18.291+03:00  INFO 5581 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:54:18.305+03:00  INFO 5581 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:54:18.305+03:00  INFO 5581 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:54:18.349+03:00  INFO 5581 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:54:18.350+03:00  INFO 5581 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 566 ms
+2025-09-08T02:54:18.414+03:00  INFO 5581 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:54:18.417+03:00  INFO 5581 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:54:18.429+03:00  INFO 5581 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:54:18.430+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:54:18.584+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:54:18.585+03:00  INFO 5581 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:54:18.590+03:00  WARN 5581 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:54:18.594+03:00  INFO 5581 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:54:18.872+03:00  INFO 5581 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:54:18.937+03:00  INFO 5581 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:54:19.076+03:00  INFO 5581 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:54:19.077+03:00  WARN 5581 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:54:19.104+03:00  WARN 5581 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:54:19.233+03:00  WARN 5581 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:54:19.291+03:00  INFO 5581 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:54:19.394+03:00  INFO 5581 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 33093 (http) with context path '/'
+2025-09-08T02:54:19.398+03:00  INFO 5581 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.666 seconds (process running for 8.667)
+2025-09-08T02:54:19.550+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:54:19.550+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:54:19.552+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-09-08T02:54:19.667+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:54:19.936+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:54:19.969+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:54:20.146+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:54:20.223+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:54:20.300+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:54:20.313+03:00  INFO 5581 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:54:20.388+03:00 ERROR 5581 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:54:20.843+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:54:20.847+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:54:20.870+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:54:20.871+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:54:20.880+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:54:20.890+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:54:20.897+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:54:20.897+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:54:20.903+03:00  INFO 5581 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:54:21.150+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:54:21.154+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:54:21.173+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:54:21.177+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:54:21.183+03:00  INFO 5581 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:54:21.189+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:54:21.190+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:54:21.191+03:00  INFO 5581 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T02:57:57.299+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 589 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:57:57.301+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T02:57:58.307+03:00  INFO 589 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:57:58.384+03:00  INFO 589 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:57:58.923+03:00  INFO 589 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:57:58.967+03:00  INFO 589 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T02:57:58.997+03:00  INFO 589 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:57:59.269+03:00  INFO 589 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:57:59.306+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T02:57:59.725+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34bf66af
+2025-09-08T02:57:59.727+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T02:57:59.764+03:00  WARN 589 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:57:59.765+03:00  WARN 589 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T02:57:59.781+03:00  INFO 589 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:58:00.830+03:00  INFO 589 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:58:00.962+03:00  INFO 589 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:58:01.486+03:00  INFO 589 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:58:01.487+03:00  WARN 589 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:58:01.618+03:00  WARN 589 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:58:02.220+03:00  WARN 589 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:58:02.509+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.61 seconds (process running for 6.482)
+2025-09-08T02:58:03.102+03:00  INFO 589 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T02:58:03.115+03:00  INFO 589 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T02:58:03.120+03:00  INFO 589 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T02:58:03.163+03:00  INFO 589 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 589 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T02:58:03.163+03:00  INFO 589 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T02:58:03.420+03:00  INFO 589 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T02:58:03.448+03:00  INFO 589 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 10 JPA repository interfaces.
+2025-09-08T02:58:03.661+03:00  INFO 589 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T02:58:03.682+03:00  INFO 589 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T02:58:03.683+03:00  INFO 589 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T02:58:03.732+03:00  INFO 589 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T02:58:03.733+03:00  INFO 589 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 566 ms
+2025-09-08T02:58:03.782+03:00  INFO 589 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T02:58:03.786+03:00  INFO 589 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T02:58:03.795+03:00  INFO 589 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T02:58:03.796+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T02:58:03.992+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T02:58:03.993+03:00  INFO 589 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T02:58:04.002+03:00  WARN 589 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T02:58:04.012+03:00  INFO 589 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T02:58:04.277+03:00  INFO 589 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T02:58:04.379+03:00  INFO 589 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:58:04.529+03:00  INFO 589 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T02:58:04.530+03:00  WARN 589 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T02:58:04.569+03:00  WARN 589 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T02:58:04.757+03:00  WARN 589 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T02:58:04.844+03:00  INFO 589 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T02:58:04.985+03:00  INFO 589 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 33807 (http) with context path '/'
+2025-09-08T02:58:04.990+03:00  INFO 589 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.87 seconds (process running for 8.963)
+2025-09-08T02:58:05.166+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T02:58:05.167+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T02:58:05.168+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T02:58:05.292+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T02:58:05.560+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T02:58:05.595+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T02:58:05.767+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T02:58:05.840+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:58:05.917+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:58:05.930+03:00  INFO 589 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T02:58:06.008+03:00 ERROR 589 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T02:58:06.458+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:58:06.463+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T02:58:06.485+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:58:06.487+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:58:06.496+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:58:06.506+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T02:58:06.514+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:58:06.514+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T02:58:06.522+03:00  INFO 589 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T02:58:06.801+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:58:06.805+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T02:58:06.816+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T02:58:06.821+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T02:58:06.824+03:00  INFO 589 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T02:58:06.832+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T02:58:06.833+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T02:58:06.834+03:00  INFO 589 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T03:00:38.065+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Starting BookstoreApplicationTests using Java 21.0.7 with PID 960 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T03:00:38.067+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : The following 1 profile is active: "mysql"
+2025-09-08T03:00:39.031+03:00  INFO 960 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T03:00:39.123+03:00  INFO 960 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 10 JPA repository interfaces.
+2025-09-08T03:00:39.732+03:00  INFO 960 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T03:00:39.776+03:00  INFO 960 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T03:00:39.807+03:00  INFO 960 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T03:00:40.058+03:00  INFO 960 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T03:00:40.105+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T03:00:40.545+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68f9e807
+2025-09-08T03:00:40.547+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T03:00:40.589+03:00  WARN 960 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T03:00:40.590+03:00  WARN 960 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-08T03:00:40.612+03:00  INFO 960 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T03:00:41.622+03:00  INFO 960 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T03:00:41.730+03:00  INFO 960 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T03:00:42.165+03:00  INFO 960 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T03:00:42.165+03:00  WARN 960 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T03:00:42.271+03:00  WARN 960 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T03:00:42.867+03:00  WARN 960 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T03:00:43.111+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.BookstoreApplicationTests  : Started BookstoreApplicationTests in 5.439 seconds (process running for 6.4)
+2025-09-08T03:00:43.702+03:00  INFO 960 --- [Bookstore] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.Bookstore.Integration.UserIntegrationTest]: UserIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-08T03:00:43.713+03:00  INFO 960 --- [Bookstore] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.Bookstore.BookstoreApplication for test class com.example.Bookstore.Integration.UserIntegrationTest
+2025-09-08T03:00:43.720+03:00  INFO 960 --- [Bookstore] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-09-08T03:00:43.774+03:00  INFO 960 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 960 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T03:00:43.775+03:00  INFO 960 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T03:00:44.058+03:00  INFO 960 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T03:00:44.077+03:00  INFO 960 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 10 JPA repository interfaces.
+2025-09-08T03:00:44.292+03:00  INFO 960 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T03:00:44.308+03:00  INFO 960 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T03:00:44.308+03:00  INFO 960 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T03:00:44.364+03:00  INFO 960 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T03:00:44.364+03:00  INFO 960 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 587 ms
+2025-09-08T03:00:44.420+03:00  INFO 960 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T03:00:44.423+03:00  INFO 960 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T03:00:44.432+03:00  INFO 960 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T03:00:44.433+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-09-08T03:00:44.632+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T03:00:44.633+03:00  INFO 960 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-09-08T03:00:44.639+03:00  WARN 960 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T03:00:44.644+03:00  INFO 960 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08T03:00:44.876+03:00  INFO 960 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T03:00:44.959+03:00  INFO 960 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T03:00:45.139+03:00  INFO 960 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T03:00:45.140+03:00  WARN 960 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T03:00:45.183+03:00  WARN 960 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T03:00:45.318+03:00  WARN 960 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T03:00:45.386+03:00  INFO 960 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T03:00:45.504+03:00  INFO 960 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 46273 (http) with context path '/'
+2025-09-08T03:00:45.508+03:00  INFO 960 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 1.788 seconds (process running for 8.797)
+2025-09-08T03:00:45.673+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T03:00:45.673+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T03:00:45.676+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-09-08T03:00:45.802+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T03:00:46.073+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T03:00:46.107+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T03:00:46.279+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T03:00:46.334+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T03:00:46.416+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T03:00:46.428+03:00  INFO 960 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T03:00:46.502+03:00 ERROR 960 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T03:00:46.948+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T03:00:46.951+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T03:00:46.972+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T03:00:46.973+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T03:00:46.984+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T03:00:46.994+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T03:00:47.000+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T03:00:47.000+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : User 'testuser' logged in successfully.
+2025-09-08T03:00:47.006+03:00  INFO 960 --- [Bookstore] [main] c.e.Bookstore.Controller.UserController  : Login attempt for username: testuser
+2025-09-08T03:00:47.259+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T03:00:47.263+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T03:00:47.277+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T03:00:47.283+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T03:00:47.287+03:00  INFO 960 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T03:00:47.293+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T03:00:47.294+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-09-08T03:00:47.295+03:00  INFO 960 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-09-08T09:57:54.024+03:00  INFO 625 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Starting UserIntegrationTest using Java 21.0.7 with PID 625 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
+2025-09-08T09:57:54.028+03:00  INFO 625 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : The following 1 profile is active: "test"
+2025-09-08T09:57:55.044+03:00  INFO 625 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08T09:57:55.120+03:00  INFO 625 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 10 JPA repository interfaces.
+2025-09-08T09:57:55.783+03:00  INFO 625 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-09-08T09:57:55.802+03:00  INFO 625 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-08T09:57:55.802+03:00  INFO 625 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-09-08T09:57:55.862+03:00  INFO 625 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-08T09:57:55.862+03:00  INFO 625 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1811 ms
+2025-09-08T09:57:56.015+03:00  INFO 625 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08T09:57:56.104+03:00  INFO 625 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-09-08T09:57:56.155+03:00  INFO 625 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-09-08T09:57:56.476+03:00  INFO 625 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08T09:57:56.510+03:00  INFO 625 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-08T09:57:56.727+03:00  INFO 625 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
+2025-09-08T09:57:56.730+03:00  INFO 625 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-08T09:57:56.771+03:00  WARN 625 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08T09:57:56.792+03:00  INFO 625 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -23,82 +864,28 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-09-07T02:28:06.646+03:00  INFO 10362 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-07T02:28:06.739+03:00  INFO 10362 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-07T02:28:07.300+03:00  INFO 10362 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-09-07T02:28:07.300+03:00  WARN 10362 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-09-07T02:28:07.413+03:00  WARN 10362 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-07T02:28:07.979+03:00  WARN 10362 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
-2025-09-07T02:28:08.191+03:00  INFO 10362 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
-2025-09-07T02:28:08.456+03:00  INFO 10362 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 32951 (http) with context path '/'
-2025-09-07T02:28:08.468+03:00  INFO 10362 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : Started BookIntegrationTest in 6.184 seconds (process running for 7.567)
-2025-09-07T02:28:08.954+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-07T02:28:08.954+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-07T02:28:08.959+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-09-07T02:28:09.090+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: bookuser
-2025-09-07T02:28:09.388+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'bookuser' registered successfully.
-2025-09-07T02:28:09.427+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: bookuser
-2025-09-07T02:28:09.605+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'bookuser' logged in successfully.
-2025-09-07T02:28:09.709+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.BookController  : Fetching books: category=null, search='null', sortBy='title', page=0
-2025-09-07T02:28:09.722+03:00  INFO 10362 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.BookController  : Fetched 0 books for page 1
-2025-09-07T02:28:09.727+03:00  WARN 10362 --- [Bookstore] [http-nio-auto-1-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-2025-09-07T02:28:09.779+03:00  INFO 10362 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-07T02:28:09.781+03:00  INFO 10362 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-07T02:28:09.787+03:00  INFO 10362 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-07T02:28:09.789+03:00  INFO 10362 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-07T02:28:09.791+03:00  INFO 10362 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-09-07T02:28:24.844+03:00  INFO 10507 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : Starting BookIntegrationTest using Java 21.0.7 with PID 10507 (started by bogdan in /home/bogdan/Depozit/University/Proiect_AWBD/Bookstore-master)
-2025-09-07T02:28:24.846+03:00  INFO 10507 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : The following 1 profile is active: "test"
-2025-09-07T02:28:25.775+03:00  INFO 10507 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-07T02:28:25.855+03:00  INFO 10507 --- [Bookstore] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 10 JPA repository interfaces.
-2025-09-07T02:28:26.555+03:00  INFO 10507 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2025-09-07T02:28:26.570+03:00  INFO 10507 --- [Bookstore] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-09-07T02:28:26.571+03:00  INFO 10507 --- [Bookstore] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
-2025-09-07T02:28:26.616+03:00  INFO 10507 --- [Bookstore] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-09-07T02:28:26.616+03:00  INFO 10507 --- [Bookstore] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1754 ms
-2025-09-07T02:28:26.821+03:00  INFO 10507 --- [Bookstore] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-07T02:28:26.891+03:00  INFO 10507 --- [Bookstore] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
-2025-09-07T02:28:26.925+03:00  INFO 10507 --- [Bookstore] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-09-07T02:28:27.236+03:00  INFO 10507 --- [Bookstore] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-07T02:28:27.266+03:00  INFO 10507 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-07T02:28:27.532+03:00  INFO 10507 --- [Bookstore] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:bookstore user=ROOT
-2025-09-07T02:28:27.535+03:00  INFO 10507 --- [Bookstore] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-07T02:28:27.569+03:00  WARN 10507 --- [Bookstore] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-07T02:28:27.592+03:00  INFO 10507 --- [Bookstore] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-09-07T02:28:28.798+03:00  INFO 10507 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-07T02:28:28.904+03:00  INFO 10507 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-07T02:28:29.592+03:00  INFO 10507 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-09-07T02:28:29.593+03:00  WARN 10507 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-09-07T02:28:29.689+03:00  WARN 10507 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-07T02:28:30.324+03:00  WARN 10507 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
-2025-09-07T02:28:30.609+03:00  INFO 10507 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
-2025-09-07T02:28:30.862+03:00  INFO 10507 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 38093 (http) with context path '/'
-2025-09-07T02:28:30.873+03:00  INFO 10507 --- [Bookstore] [main] c.e.B.integration.BookIntegrationTest    : Started BookIntegrationTest in 6.413 seconds (process running for 7.707)
-2025-09-07T02:28:31.394+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-07T02:28:31.394+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-09-07T02:28:31.397+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2025-09-07T02:28:31.630+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: bookuser
-2025-09-07T02:28:32.045+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'bookuser' registered successfully.
-2025-09-07T02:28:32.105+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: bookuser
-2025-09-07T02:28:32.325+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'bookuser' logged in successfully.
-2025-09-07T02:28:32.471+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.BookController  : Fetching books: category=null, search='null', sortBy='title', page=0
-2025-09-07T02:28:32.489+03:00  INFO 10507 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.BookController  : Fetched 0 books for page 1
-2025-09-07T02:28:32.493+03:00  WARN 10507 --- [Bookstore] [http-nio-auto-1-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-2025-09-07T02:28:32.549+03:00  INFO 10507 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-07T02:28:32.551+03:00  INFO 10507 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-09-07T02:28:32.557+03:00  INFO 10507 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-07T02:28:32.560+03:00  INFO 10507 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-09-07T02:28:32.562+03:00  INFO 10507 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-09-08T09:57:58.009+03:00  INFO 625 --- [Bookstore] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08T09:57:58.098+03:00  INFO 625 --- [Bookstore] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T09:57:58.607+03:00  INFO 625 --- [Bookstore] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-09-08T09:57:58.609+03:00  WARN 625 --- [Bookstore] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-09-08T09:57:58.725+03:00  WARN 625 --- [Bookstore] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08T09:57:59.251+03:00  WARN 625 --- [Bookstore] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-09-08T09:57:59.428+03:00  INFO 625 --- [Bookstore] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:bookstore'
+2025-09-08T09:57:59.688+03:00  INFO 625 --- [Bookstore] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 39005 (http) with context path '/'
+2025-09-08T09:57:59.702+03:00  INFO 625 --- [Bookstore] [main] c.e.B.Integration.UserIntegrationTest    : Started UserIntegrationTest in 6.102 seconds (process running for 7.437)
+2025-09-08T09:58:00.229+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08T09:58:00.230+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-09-08T09:58:00.231+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-09-08T09:58:00.346+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: loginuser
+2025-09-08T09:58:00.615+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-1] c.e.Bookstore.Controller.UserController  : User 'loginuser' registered successfully.
+2025-09-08T09:58:00.649+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : Login attempt for username: loginuser
+2025-09-08T09:58:00.829+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-2] c.e.Bookstore.Controller.UserController  : User 'loginuser' logged in successfully.
+2025-09-08T09:58:00.899+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : Attempting to register a new user with username: testuser
+2025-09-08T09:58:00.979+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-3] c.e.Bookstore.Controller.UserController  : User 'testuser' registered successfully.
+2025-09-08T09:58:00.995+03:00  INFO 625 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.Bookstore.Controller.UserController  : Login attempt for username: nonexistent
+2025-09-08T09:58:01.078+03:00 ERROR 625 --- [Bookstore] [http-nio-auto-1-exec-4] c.e.B.Exception.GlobalExceptionHandler   : Bad credentials: Bad credentials
+2025-09-08T09:58:01.092+03:00  INFO 625 --- [Bookstore] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-09-08T09:58:01.095+03:00  INFO 625 --- [Bookstore] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-09-08T09:58:01.103+03:00  INFO 625 --- [Bookstore] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08T09:58:01.105+03:00  INFO 625 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-09-08T09:58:01.108+03:00  INFO 625 --- [Bookstore] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

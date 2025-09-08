@@ -132,5 +132,4 @@ class UserControllerTest {
         verify(userService).loadUserByUsername("testuser");
         verify(jwtUtil, never()).generateToken(any(UserDetails.class));
     }
-
 }

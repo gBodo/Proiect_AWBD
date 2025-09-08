@@ -132,4 +132,20 @@ class UserServiceTest {
         verify(userRepository).findByUsername("nonexistent");
     }
 
+    @Test
+    void registerUser_ShouldEncodePassword() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
+        when(userRepository.findByUsername("testuser")).thenReturn(Optional.empty());
+        when(passwordEncoder.encode("password123")).thenReturn("encodedPassword");
+        when(userRepository.save(any(User.class))).thenAnswer(invocation -> {
+            User user = invocation.getArgument(0);
+            assertThat(user.getPassword()).isEqualTo("encodedPassword");
+            return user;
+        });
+
+        userService.registerUser(validRegistrationBody);
+
+        verify(passwordEncoder).encode("password123");
+        verify(userRepository).save(any(User.class));
+    }
 }
