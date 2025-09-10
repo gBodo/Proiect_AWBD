@@ -1,16 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        h1 {
+            font-weight: bold;
+            font-size: 2.3rem;
+        }
+        .lead {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #f1f1f1;
+        }
+        .btn {
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
+        }
+        .icon {
+            font-size: 1.3rem;
+            margin-right: 8px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body class="container mt-5 text-center">
-<h1>Welcome to the Bookstore</h1>
-<p class="lead">Please choose an option:</p>
+<body>
+<div class="glass-card">
+    <h1><i class="bi bi-book-half"></i> Welcome to the Bookstore</h1>
+    <p class="lead">A world of stories is waiting for you 📚</p>
 
-<div class="d-flex justify-content-center gap-3 mt-4">
-    <a href="register.html" class="btn btn-success btn-lg">Register</a>
-    <a href="login.html" class="btn btn-primary btn-lg">Login</a>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="register.html" class="btn btn-success btn-lg">
+            <i class="bi bi-pencil-square icon"></i> Register
+        </a>
+        <a href="login.html" class="btn btn-primary btn-lg">
+            <i class="bi bi-box-arrow-in-right icon"></i> Login
+        </a>
+    </div>
 </div>
 </body>
 </html>

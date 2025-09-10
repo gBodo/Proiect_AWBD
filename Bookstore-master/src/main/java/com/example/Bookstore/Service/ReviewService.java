@@ -40,6 +40,7 @@ public class ReviewService {
                     viewReview.setId(review.getId());
                     viewReview.setRating(review.getRating());
                     viewReview.setComment(review.getComment());
+                    viewReview.setUser_id(review.getUser().getUsername());
                     return viewReview;
                 })
                 .collect(Collectors.toList());
