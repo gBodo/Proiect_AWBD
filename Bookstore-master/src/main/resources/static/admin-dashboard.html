@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            width: 95%;
+            max-width: 1300px;
+            color: white;
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease;
+        }
+        h2 {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .filters {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .btn-info, .btn-danger, .btn-warning {
+            border-radius: 20px;
+        }
+        #logoutBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            border-radius: 30px;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        .pagination-controls span {
+            color: white;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .admin-forms {
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Review Panel Styles */
+        .review-panel {
+            position: fixed;
+            right: -450px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+            z-index: 1500;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+        }
+        .review-panel.active {
+            right: 0;
+        }
+        .review-panel-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .review-panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+        .review-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .review-tab {
+            flex: 1;
+            padding: 15px;
+            background: transparent;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .review-tab.active {
+            background: white;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+        }
+        .tab-content {
+            padding: 20px;
+            height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        .review-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+            border-left: 4px solid #667eea;
+        }
+        .review-stars {
+            color: #ffc107;
+            font-size: 16px;
+        }
+        .review-author {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .close-panel {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .close-panel:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        .add-review-form {
+            color: #333;
+        }
+        .reviews-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        .reviews-button:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<button id="logoutBtn" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Logout</button>
+
+<div class="dashboard-container">
+    <h2><i class="bi bi-speedometer2"></i> Admin Dashboard</h2>
+    <p class="text-center">Manage books in the bookstore.</p>
+
+    <div id="message" class="mb-3"></div>
+
+    <!-- Admin Forms -->
+    <div class="admin-forms row g-3">
+        <!-- Add Book -->
+        <div class="col-md-4">
+            <h5><i class="bi bi-plus-circle"></i> Add Book</h5>
+            <form id="addBookForm">
+                <input type="text" id="addTitle" class="form-control mb-2" placeholder="Title" required>
+                <input type="text" id="addAuthors" class="form-control mb-2" placeholder="Authors (comma separated)" required>
+                <input type="text" id="addCover" class="form-control mb-2" placeholder="Cover Image URL" required>
+                <input type="number" step="0.01" id="addPrice" class="form-control mb-2" placeholder="Price" required>
+                <input type="number" id="addCategory" class="form-control mb-2" placeholder="Category ID" required>
+                <button type="submit" class="btn btn-success w-100">Add</button>
+            </form>
+        </div>
+
+        <!-- Delete Book -->
+        <div class="col-md-4">
+            <h5><i class="bi bi-trash"></i> Delete Book</h5>
+            <form id="deleteBookForm">
+                <input type="text" id="deleteTitle" class="form-control mb-2" placeholder="Title" required>
+                <button type="submit" class="btn btn-danger w-100">Delete</button>
+            </form>
+        </div>
+
+        <!-- Update Book Price -->
+        <div class="col-md-4">
+            <h5><i class="bi bi-pencil"></i> Update Price</h5>
+            <form id="updateBookForm">
+                <input type="text" id="updateTitle" class="form-control mb-2" placeholder="Title" required>
+                <input type="number" step="0.01" id="updatePrice" class="form-control mb-2" placeholder="New Price" required>
+                <button type="submit" class="btn btn-warning w-100">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Filters and Sorting -->
+    <div class="filters row g-2">
+        <div class="col-md-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search by title">
+        </div>
+        <div class="col-md-4">
+            <select id="categorySelect" class="form-select">
+                <option value="">📂 All Categories</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="sortSelect" class="form-select">
+                <option value="">↕️ Sort by</option>
+                <option value="title">Title</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Book List -->
+    <div id="bookList" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
+    <!-- Pagination -->
+    <div class="pagination-controls">
+        <button id="prevPage" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Previous</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" class="btn btn-secondary">Next <i class="bi bi-arrow-right"></i></button>
+    </div>
+</div>
+
+<!-- Review Panel -->
+<div class="review-panel" id="reviewPanel">
+    <div class="review-panel-header">
+        <button class="close-panel" onclick="closeReviewPanel()">
+            <i class="bi bi-x"></i>
+        </button>
+        <h5 class="mb-0" id="reviewPanelTitle">Book Reviews</h5>
+    </div>
+    <div class="review-panel-body">
+        <div class="review-tabs">
+            <button class="review-tab active" onclick="switchTab('view')">
+                <i class="bi bi-eye"></i> View Reviews
+            </button>
+            <button class="review-tab" onclick="switchTab('add')">
+                <i class="bi bi-plus"></i> Add Review
+            </button>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="viewReviewsTab">
+                <div id="reviewsList"></div>
+            </div>
+            <div class="tab-pane" id="addReviewTab">
+                <form id="addReviewForm" class="add-review-form">
+                    <div class="mb-3">
+                        <label class="form-label">Rating:</label>
+                        <select class="form-select" name="rating" required>
+                            <option value="">Select rating</option>
+                            <option value="1">1 ⭐</option>
+                            <option value="2">2 ⭐⭐</option>
+                            <option value="3">3 ⭐⭐⭐</option>
+                            <option value="4">4 ⭐⭐⭐⭐</option>
+                            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Comment:</label>
+                        <textarea class="form-control" name="comment" rows="4" placeholder="Write your review..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-send"></i> Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function parseJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        ).join(''));
+        return JSON.parse(jsonPayload);
+    }
+
+    const token = localStorage.getItem('jwt');
+    if (!token) window.location.href = 'login.html';
+    else {
+        const payload = parseJwt(token);
+        const roles = payload.role || payload.roles || payload.authorities;
+        if (!roles.includes('ADMIN')) window.location.href = 'login.html';
+    }
+
+    const messageDiv = document.getElementById('message');
+    const bookList = document.getElementById('bookList');
+    const searchInput = document.getElementById('searchInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const sortSelect = document.getElementById('sortSelect');
+    const prevPage = document.getElementById('prevPage');
+    const nextPage = document.getElementById('nextPage');
+    const pageInfo = document.getElementById('pageInfo');
+
+    let currentPage = 0;
+    const pageSize = 5;
+    let totalPages = 1;
+    let currentBookId = null;
+    let currentBookTitle = '';
+
+    async function fetchCategories() {
+        try {
+            const res = await fetch('/api/categories', { headers: { 'Authorization': `Bearer ${token}` } });
+            if (res.ok) {
+                const categories = await res.json();
+                categories.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.id;
+                    option.textContent = cat.name;
+                    categorySelect.appendChild(option);
+                });
+            }
+        } catch (err) {
+            console.error("Failed to load categories", err);
+        }
+    }
+
+    async function fetchBooks() {
+        try {
+            const search = searchInput.value;
+            const category = categorySelect.value;
+            const sortBy = sortSelect.value;
+
+            let url = `/api/books?page=${currentPage}&size=${pageSize}`;
+            if (search) url += `&search=${encodeURIComponent(search)}`;
+            if (category) url += `&category=${category}`;
+            if (sortBy) url += `&sortBy=${sortBy}`;
+
+            const res = await fetch(url, { headers: { 'Authorization': `Bearer ${token}` } });
+            if (!res.ok) {
+                messageDiv.innerHTML = res.status === 403 ? `<div class="alert alert-danger">Unauthorized.</div>` : `<div class="alert alert-danger">Failed to fetch books.</div>`;
+                return;
+            }
+
+            const data = await res.json();
+            const books = data.content || data;
+            totalPages = data.totalPages || 1;
+
+            bookList.innerHTML = '';
+            pageInfo.textContent = `Page ${currentPage + 1} of ${totalPages}`;
+            prevPage.disabled = currentPage === 0;
+            nextPage.disabled = currentPage + 1 >= totalPages;
+
+            if (books.length === 0) {
+                messageDiv.innerHTML = `<div class="alert alert-info">No books available.</div>`;
+                return;
+            }
+
+            books.forEach(book => {
+                const col = document.createElement('div');
+                col.classList.add('col');
+                col.innerHTML = `
+          <div class="card h-100">
+            <img src="${book.coverImageUrl}" class="card-img-top" alt="${book.title}">
+            <div class="card-body">
+              <h5 class="card-title">${book.title}</h5>
+              <button class="btn btn-sm btn-info toggle-details">View Details</button>
+              <button class="btn btn-sm reviews-button" onclick="openReviewPanel(${book.id}, '${book.title}')">
+                <i class="bi bi-star"></i> Reviews
+              </button>
+              <div class="book-details mt-2" style="display:none;"></div>
+            </div>
+          </div>
+        `;
+
+                const btn = col.querySelector('.toggle-details');
+                const detailsDiv = col.querySelector('.book-details');
+                btn.addEventListener('click', async () => {
+                    if (detailsDiv.style.display === 'none') {
+                        try {
+                            const res = await fetch(`/api/books/${book.id}`, { headers: { 'Authorization': `Bearer ${token}` } });
+                            if (res.ok) {
+                                const b = await res.json();
+                                detailsDiv.innerHTML = `
+                  <p><strong>Author:</strong> ${b.authors.join(', ')}</p>
+                  <p><strong>Category:</strong> ${b.category ? b.category.name : 'N/A'}</p>
+                  <p><strong>Price:</strong> $${b.price}</p>
+                `;
+                                detailsDiv.style.display = 'block';
+                                btn.textContent = 'Hide Details';
+                            } else if (res.status === 403) {
+                                detailsDiv.innerHTML = `<div class="alert alert-danger">You are not authorized to view this book.</div>`;
+                                detailsDiv.style.display = 'block';
+                                btn.textContent = 'Hide Details';
+                            } else {
+                                detailsDiv.innerHTML = `<div class="alert alert-danger">Failed to fetch book details.</div>`;
+                                detailsDiv.style.display = 'block';
+                                btn.textContent = 'Hide Details';
+                            }
+                        } catch (err) {
+                            detailsDiv.innerHTML = `<div class="alert alert-danger">Error: ${err}</div>`;
+                            detailsDiv.style.display = 'block';
+                            btn.textContent = 'Hide Details';
+                        }
+                    } else {
+                        detailsDiv.style.display = 'none';
+                        btn.textContent = 'View Details';
+                    }
+                });
+
+                bookList.appendChild(col);
+            });
+        } catch (err) {
+            messageDiv.innerHTML = `<div class="alert alert-danger">Error: ${err}</div>`;
+        }
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', () => { currentPage = 0; fetchBooks(); });
+    categorySelect.addEventListener('change', () => { currentPage = 0; fetchBooks(); });
+    sortSelect.addEventListener('change', () => { currentPage = 0; fetchBooks(); });
+    prevPage.addEventListener('click', () => { if (currentPage > 0) { currentPage--; fetchBooks(); } });
+    nextPage.addEventListener('click', () => { if (currentPage + 1 < totalPages) { currentPage++; fetchBooks(); } });
+
+    fetchCategories();
+    fetchBooks();
+
+    // Review Panel Functions
+    function openReviewPanel(bookId, bookTitle) {
+        currentBookId = bookId;
+        currentBookTitle = bookTitle;
+        document.getElementById('reviewPanelTitle').textContent = `Reviews for "${bookTitle}"`;
+        document.getElementById('reviewPanel').classList.add('active');
+        loadReviews(bookId);
+    }
+
+    function closeReviewPanel() {
+        document.getElementById('reviewPanel').classList.remove('active');
+    }
+
+    function switchTab(tab) {
+        document.querySelectorAll('.review-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+        if (tab === 'view') {
+            document.querySelector('.review-tab:first-child').classList.add('active');
+            document.getElementById('viewReviewsTab').classList.add('active');
+        } else {
+            document.querySelector('.review-tab:last-child').classList.add('active');
+            document.getElementById('addReviewTab').classList.add('active');
+        }
+    }
+
+    async function loadReviews(bookId) {
+        try {
+            const res = await fetch(`/api/reviews/book/${bookId}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            const reviewsList = document.getElementById('reviewsList');
+
+            if (res.ok) {
+                const reviews = await res.json();
+                if (reviews.length === 0) {
+                    reviewsList.innerHTML = `
+                    <div class="text-center text-muted">
+                        <i class="bi bi-chat-dots"></i>
+                        <p>No reviews yet.<br>Be the first to review!</p>
+                    </div>
+                `;
+                } else {
+                    reviewsList.innerHTML = reviews.map(review => `
+                    <div class="review-item">
+                        <div class="d-flex justify-content-start align-items-center mb-2">
+                            <span class="review-stars">${'⭐'.repeat(review.rating)}</span>
+                        </div>
+                        <div class="review-author">By: ${review.user_id || 'Anonymous'}</div>
+                        <p class="mb-0">${review.comment}</p>
+                    </div>
+                `).join('');
+                }
+            } else {
+                reviewsList.innerHTML = '<div class="alert alert-danger">Failed to load reviews.</div>';
+            }
+        } catch (err) {
+            reviewsList.innerHTML = '<div class="alert alert-danger">Error loading reviews.</div>';
+        }
+    }
+
+
+    // Add Review Form
+    document.getElementById('addReviewForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const reviewData = {
+            rating: parseInt(formData.get('rating')),
+            comment: formData.get('comment')
+        };
+
+        try {
+            const res = await fetch(`/api/reviews/book/${currentBookId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(reviewData)
+            });
+
+            if (res.ok) {
+                messageDiv.innerHTML = '<div class="alert alert-success">Review submitted successfully!</div>';
+                e.target.reset();
+                loadReviews(currentBookId);
+                switchTab('view');
+            } else {
+                const errorText = await res.text();
+                messageDiv.innerHTML = `<div class="alert alert-danger">Failed to submit review: ${errorText}</div>`;
+            }
+        } catch (err) {
+            messageDiv.innerHTML = `<div class="alert alert-danger">Error submitting review: ${err}</div>`;
+        }
+    });
+
+    // Admin Forms (existing code)
+    document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const book = {
+            title: document.getElementById('addTitle').value,
+            authors: document.getElementById('addAuthors').value.split(',').map(a => a.trim()),
+            cover_image_url: document.getElementById('addCover').value,
+            price: parseFloat(document.getElementById('addPrice').value),
+            category_id: parseInt(document.getElementById('addCategory').value)
+        };
+
+        try {
+            const res = await fetch('/api/admin/books/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify(book)
+            });
+            if (res.ok) {
+                messageDiv.innerHTML = `<div class="alert alert-success">Book added successfully!</div>`;
+                fetchBooks();
+                e.target.reset();
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">Failed to add book.</div>`;
+            }
+        } catch (err) {
+            messageDiv.innerHTML = `<div class="alert alert-danger">Error: ${err}</div>`;
+        }
+    });
+
+    document.getElementById('deleteBookForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('deleteTitle').value;
+
+        try {
+            const res = await fetch('/api/admin/books/delete', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify({ title })
+            });
+            if (res.ok) {
+                messageDiv.innerHTML = `<div class="alert alert-success">Book deleted successfully!</div>`;
+                fetchBooks();
+                e.target.reset();
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">Failed to delete book.</div>`;
+            }
+        } catch (err) {
+            messageDiv.innerHTML = `<div class="alert alert-danger">Error: ${err}</div>`;
+        }
+    });
+
+    document.getElementById('updateBookForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = {
+            title: document.getElementById('updateTitle').value,
+            price: parseFloat(document.getElementById('updatePrice').value)
+        };
+
+        try {
+            const res = await fetch('/api/admin/books/update', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify(data)
+            });
+            if (res.ok) {
+                messageDiv.innerHTML = `<div class="alert alert-success">Book price updated!</div>`;
+                fetchBooks();
+                e.target.reset();
+            } else {
+                messageDiv.innerHTML = `<div class="alert alert-danger">Failed to update price.</div>`;
+            }
+        } catch (err) {
+            messageDiv.innerHTML = `<div class="alert alert-danger">Error: ${err}</div>`;
+        }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('jwt');
+        window.location.href = 'homepage.html';
+    });
+</script>
+</body>
+</html>
